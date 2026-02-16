@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Advanced Notes App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<section class="container">
+
+    <h1>Notes App</h1>
+
+    <div class="input-area">
+        <input type="text" id="noteInput" placeholder="Write your note">
+        <button onclick="addNote()">Add</button>
+    </div>
+
+    <!-- SEARCH BAR -->
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search notes..." onkeyup="searchNotes()">
+    </div>
+
+    <!-- FILTER -->
+    <div class="filter-box">
+        <button onclick="setFilter('all')">All</button>
+        <button onclick="setFilter('active')">Active</button>
+        <button onclick="setFilter('completed')">Completed</button>
+    </div>
+
+    <!-- TABLE -->
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Note</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="notesBody"></tbody>
+    </table>
+
+    <!-- PAGINATION -->
+    <div class="pagination">
+        <button onclick="prevPage()">Prev</button>
+        <span id="pageInfo"></span>
+        <button onclick="nextPage()">Next</button>
+    </div>
+
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>

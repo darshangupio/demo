@@ -1,0 +1,51 @@
+body{
+    font-family: Arial;
+    background:#f2f2f2;
+}
+
+.container{
+    width:70%;
+    margin:auto;
+    text-align:center;
+}
+
+.input-area, .search-box, .filter-box{
+    margin:15px;
+}
+
+input{
+    padding:10px;
+    width:250px;
+}
+
+button{
+    padding:8px 12px;
+    margin:5px;
+    cursor:pointer;
+}
+
+table{
+    width:100%;
+    background:white;
+    border-collapse: collapse;
+}
+
+th{
+    background:#333;
+    color:white;
+    padding:10px;
+}
+
+td{
+    padding:10px;
+    border-bottom:1px solid #ddd;
+}
+
+.completed{
+    text-decoration: line-through;
+    color: gray;
+}
+
+.pagination{
+    margin-top:20px;
+}
