@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gupio Task Analytics | Smart Tracker</title>
+    <!-- Modern Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="app-container">
+        <!-- Sidebar / Analytics -->    
+        <aside class="sidebar">
+            <header class="brand">
+                <div class="logo">G</div>
+                <h1>Gupio <span>Analytics</span></h1>
+            </header>
+
+            <section class="analytics">
+                <h3>Real-time Insights</h3>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="label">Total</span>
+                        <span id="totalCount" class="value">0</span>
+                    </div>
+                    <div class="stat-card todo">
+                        <span class="label">Todo</span>
+                        <span id="todoCount" class="value">0</span>
+                    </div>
+                    <div class="stat-card progress">
+                        <span class="label">In Progress</span>
+                        <span id="progressCount" class="value">0</span>
+                    </div>
+                    <div class="stat-card done">
+                        <span class="label">Done</span>
+                        <span id="doneCount" class="value">0</span>
+                    </div>
+                    <div class="stat-card overdue">
+                        <span class="label">Overdue</span>
+                        <span id="overdueCount" class="value">0</span>
+                    </div>
+                    <div class="stat-card tag">
+                        <span class="label">Top Tag</span>
+                        <span id="topTag" class="value">-</span>
+                    </div>
+                </div>
+            </section>
+
+            <div class="sidebar-footer">
+                <button id="exportJSON" class="btn secondary">Export JSON</button>
+                <button id="resetApp" class="btn danger">Reset System</button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="content">
+            <div id="globalError" class="error-banner" style="display: none;"></div>
+
+            <section class="task-form-wrapper card">
+                <div class="card-header">
+                    <h2>Manage Task</h2>
+                    <p class="subtitle">Organize your workflow efficiently</p>
+                </div>
+                <form id="taskForm">
+                    <input type="hidden" id="taskId">
+
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="title">Task Title</label>
+                            <input type="text" id="title" placeholder="What needs to be done?" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="priority">Priority</label>
+                            <select id="priority">
+                                <option value="Low">Low</option>
+                                <option value="Medium" selected>Medium</option>
+                                <option value="High">High</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="description">Description</label>
+                        <textarea id="description" placeholder="Add some details..." maxlength="200"></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="tags">Tags (comma separated)</label>
+                            <input type="text" id="tags" placeholder="work, urgent, personal">
+                        </div>
+                        <div class="input-group">
+                            <label for="dueDate">Due Date</label>
+                            <input type="date" id="dueDate">
+                        </div>
+                    </div>
+
+                    <div class="form-row footer">
+                        <div class="input-group">
+                            <label for="status">Initial Status</label>
+                            <select id="status">
+                                <option value="todo">Todo</option>
+                                <option value="in-progress">In Progress</option>
+                                <option value="done">Done</option>
+                            </select>
+                        </div>
+                        <div class="btn-group">
+                            <button type="submit" id="submitBtn" class="btn primary">Secure Save</button>
+                        </div>
+                    </div>
+                    <p id="formError" class="error-msg"></p>
+                </form>
+            </section>
+
+            <section id="filterSection" class="filters sticky">
+                <div class="search-bar">
+                    <input type="text" id="search" placeholder="Type '/' to focus search...">
+                    <span class="kbt-hint">/</span>
+                </div>
+                <div class="filter-controls">
+                    <select id="filterStatus">
+                        <option value="all">All Status</option>
+                        <option value="todo">Todo</option>
+                        <option value="in-progress">In Progress</option>
+                        <option value="done">Done</option>
+                    </select>
+                    <select id="filterPriority">
+                        <option value="all">All Priority</option>
+                        <option value="High">High</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Low">Low</option>
+                    </select>
+                    <select id="filterTag">
+                        <option value="all">All Tags</option>
+                    </select>
+                    <select id="sort">
+                        <option value="newest">Newest First</option>
+                        <option value="dueDate">Due Date</option>
+                        <option value="priority">Priority (High-Low)</option>
+                    </select>
+                </div>
+            </section>
+
+            <div id="taskList" class="task-grid">
+                <!-- Tasks injected here -->
+                <div class="loading-state">Initial Loading System...</div>
+            </div>
+        </main>
+    </div>
+
+    <script type="module" src="app.js"></script>
+</body>
+
+</html>
